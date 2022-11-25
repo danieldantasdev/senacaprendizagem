@@ -1,0 +1,111 @@
+[
+  {
+    "encontroId": 1,
+    "encontroObservacao": "",
+    "diaLetivoId": 1,
+    "grupoId": 1,
+    "encontroHoraInicio": "2020-09-20",
+    "encontroHoraFim": "2020-09-20",
+    "encontroLocal": "Rio de Janeiro",
+    "encontroStatus": 1,
+    "encontroTipoId": 1,
+      "encontroTipo": {
+        "encontroTipoId": 1,
+        "encontroTipoDescricao": "",
+        "encontroTipoStatus": 1
+      },
+        "diaLetivo": {
+          "diaLetivoId": 1,
+          "diaLetivo": "2020-08-20",
+          "diaLetivoDia": 20,
+          "diaLetivoMes": 8,
+          "diaLetivoAno": 2020,
+          "diaLetivoSemana": 1,
+          "diaLetivoStatus": 1,
+          "periodoId": 1
+        },
+          "periodo": {
+            "periodoId": 1,
+            "periodoNome": "",
+            "periodoStatus": 1
+          },
+            "grupo": {
+              "grupoId": 1,
+              "grupoDescricao": "",
+              "grupoInicio": "2020-08-20",
+              "grupoFim": "2020-03-02",
+              "grupoSala": "",
+              "grupoStatus": 1,
+              "turnoId": 1,
+              "unidadeCurricularId": 1,
+              "periodoId": 1,
+              "professorId": 1
+            },
+              "unidadeCurricular": {
+                "unidadeCurricularId": 1,
+                "unidadeCurricularCodigo": "",
+                "unidadeCurricularNome": "",
+                "unidadeCurricularNomeCurto": "",
+                "unidadeCurricularHoras": 250,
+                "unidadeCurricularModulo": 1,
+                "unidadeCurricularOrdem": 1,
+                "unidadeCurricularStatus": 1,
+                "moduloId": 1
+              },
+                "competencia": {
+                  "competenciaId": 1,
+                  "competenciaDescricao": "",
+                  "competenciaOrdem": 1,
+                  "competenciaStatus": 1,
+                  "unidadeCurricularId": 1
+                },
+                  "competenciaIndicador": {
+                    "competenciaIndicadorId": 1,
+                    "competenciaIndicadorDescricao": "",
+                    "competenciaIndicadorStatus": 1,
+                    "competenciaId": 1
+                  },
+                    "IndicadorSituacaoAprendizagem": {
+                      "IndicadorSituacaoAprendizagemId": 1,
+                      "competenciaIndicadorId": 1,
+                      "situacaoAprendizagemId": 1
+                    },
+                      "situacaoAprendizagem": {
+                        "situacaoAprendizagemId": 1,
+                        "situacaoAprendizagemTitulo": "",
+                        "situacaoAprendizagemDescricao": "",
+                        "situacaoAprendizagemOrdem": 1,
+                        "situacaoAprendizagemStatus": 1,
+                        "planejamentoUcId": 1,
+                        "grauDificuldadeId": 1,
+                        "badgeId": 1
+                      },
+                        "situacaoEncontro": {
+                          "situacaoEncontroId": 1,
+                          "situacaoEncontroStatus": 1,
+                          "situacaoAprendizagemId": 1,
+                          "encontroId": 1
+                        },
+                          "situacaoObjetoAprendizagem": {
+                            "situacaoObjetoAprendizagemId": 1,
+                            "situacaoObjetoAprendizagemOrdem": 1,
+                            "situacaoAprendizagemId": 1,
+                            "objetoAprendizagemId": 1
+                          },
+                            "objetoAprendizagem": {
+                              "objetoAprendizagemId": 1,
+                              "objetoAprendizagemDescricao": "",
+                              "objetoAprendizagemBlob": 21212121,
+                              "objetoAprendizagemStatus": 1,
+                              "grauDificuldadeId": 1,
+                              "usuarioId": 1
+                            },
+                              "planejamentoUc": {
+                                "planejamentoUcId": 1,
+                                "planejamentoUcDescricao": "",
+                                "planejamentoUcDataAprovacao": "2020-07-20",
+                                "planejamentoStatus": 1,
+                                "grupoId": 1
+                              }
+  }
+]

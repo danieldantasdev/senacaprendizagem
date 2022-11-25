@@ -1,0 +1,48 @@
+[
+  {
+    "badgeId": 1,
+    "badgeDescricao": "estudo prévio",
+    "badgeImg": null,
+    "badgeStatus": 1,
+      "badgeNivel": {
+        "badgeNivelId": 1,
+        "badgeNivelDescricao": "tipo"
+      },
+      "acompanhamento":{
+        "acompanhamentoId": 1,
+        "acompanhamentoInicio": "2020-10-09",
+        "acompanhamentoFinalizacao": "2020-12-09",
+        "acompanhamentoStatus": 1,
+        "participanteId": 1,
+        "avaliacaoConceitoId": 1,
+        "atividadeId": 1,
+        "objetoAprendizagemId": 1,
+        "situacaoAprendizagemId": 1,
+        "badgeId": 1,
+        "acompanhamentoDataBadge": "2020-10-09"
+      },
+          "acompanhamentoAtividadeComentario":{
+            "acompanhamentoAtividadeComentarioId": 1,
+            "acompanhamentoAtividadeComentario": "",
+            "acompanhamentoAtividadeComentarioData": "",
+            "acompanhamentoAtividadeComentarioStatus": 1,
+            "acompanhamentoAtividadeId": 1
+          },
+            "situacaoAprendizagem": {
+              "situacaoAprendizagemId": 1,
+              "situacaoAprendizagemTitulo": " ",
+              "situacaoAprendizagemDescricao": " ",
+              "situacaoAprendizagemOrdem": 1,
+              "situacaoAprendizagemStatus": 1,
+              "planejamentoUcId": 1,
+              "grauDificuldadeId": 1,
+              "badgeId": 1
+            },
+            "situacaoObjetoAprendizagem": {
+              "situacaoObjetoAprendizagemId": 1,
+              "situacaoObjetoAprendizagemOrdem": 1,
+              "situacaoAprendizagemId": 1,
+              "objetoAprendizagemId": 1
+            }
+  }
+]
