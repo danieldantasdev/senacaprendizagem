@@ -1,9 +1,13 @@
-import { Periodo } from "./Periodo";
+import { Periodo } from './Periodo';
 
 export class DiaLetivo {
-    id: number;
-    data: Date;
-    status: number;
-    periodoId: number;
-    periodo: Periodo;
+  diaLetivoId: number;
+  diaLetivo: string;
+  diaLetivoDia: number;
+  diaLetivoMes: number;
+  diaLetivoAno: number;
+  diaLetivoSemana: number;
+  diaLetivoStatus: number;
+  periodoId: number;
+  periodo: Periodo;
 }
