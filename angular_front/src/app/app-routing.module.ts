@@ -1,3 +1,4 @@
+import { TimelineListaComponent } from './components/Timeline/timeline-lista/timeline-lista.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AtualizarCursoComponent } from './components/Curso/atualizar-curso/atualizar-curso.component';
@@ -21,52 +22,69 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     canActivate: [AuthGuardService],
-    children:[
+    children: [
       {
-        path: 'dashboard/usuariodashboard', component: UsuarioDashboardComponent
+        path: 'dashboard/usuariodashboard',
+        component: UsuarioDashboardComponent,
       },
       {
-        path: 'dashboard/administradordashboard', component: AdministradorDashboardComponent
-      },        
-      {
-        path: 'cursos/listagemcursos', component: ListagemCursosComponent
+        path: 'dashboard/administradordashboard',
+        component: AdministradorDashboardComponent,
       },
       {
-        path: 'cursos/novocurso', component: NovoCursoComponent
+        path: 'cursos/listagemcursos',
+        component: ListagemCursosComponent,
       },
       {
-        path: 'cursos/atualizarcurso/:id', component: AtualizarCursoComponent
+        path: 'cursos/novocurso',
+        component: NovoCursoComponent,
       },
       {
-        path: 'funcoes/listagemfuncoes', component: ListagemFuncoesComponent
+        path: 'cursos/atualizarcurso/:id',
+        component: AtualizarCursoComponent,
       },
       {
-        path: 'funcoes/novafuncao', component: NovaFuncaoComponent
+        path: 'funcoes/listagemfuncoes',
+        component: ListagemFuncoesComponent,
       },
       {
-        path: 'funcoes/atualizarfuncao/:id', component: AtualizarFuncaoComponent
+        path: 'funcoes/novafuncao',
+        component: NovaFuncaoComponent,
       },
       {
-        path: 'ofertas/listagemofertas', component: ListagemOfertasComponent
-      },      
-      {
-        path: 'ofertas/novaoferta', component: NovaOfertaComponent
+        path: 'funcoes/atualizarfuncao/:id',
+        component: AtualizarFuncaoComponent,
       },
       {
-        path: 'ofertas/atualizaroferta/:id', component: AtualizarOfertaComponent
-      },      
-    ]
+        path: 'ofertas/listagemofertas',
+        component: ListagemOfertasComponent,
+      },
+      {
+        path: 'ofertas/novaoferta',
+        component: NovaOfertaComponent,
+      },
+      {
+        path: 'ofertas/atualizaroferta/:id',
+        component: AtualizarOfertaComponent,
+      },
+      {
+        path: 'timeline/listagemTimeline',
+        component: TimelineListaComponent,
+      },
+    ],
   },
   {
-    path: 'usuarios/registrarusuario', component: RegistrarUsuarioComponent
+    path: 'usuarios/registrarusuario',
+    component: RegistrarUsuarioComponent,
   },
   {
-    path: 'usuarios/loginusuario', component: LoginUsuarioComponent
-  }
+    path: 'usuarios/loginusuario',
+    component: LoginUsuarioComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

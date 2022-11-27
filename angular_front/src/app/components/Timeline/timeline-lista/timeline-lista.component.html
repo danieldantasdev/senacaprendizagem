@@ -1,0 +1,130 @@
+<div class="card l-section__timeline">
+  <p-timeline
+    *ngIf="encontros$ | async as encontros; else isLoading"
+    [value]="encontros"
+    styleClass="customized-timeline"
+  >
+    <ng-template pTemplate="marker" let-encontro>
+      <span
+        class="custom-marker shadow-2"
+        [style.backgroundColor]="
+          encontro.situacaoAprendizagem.situacaoAprendizagemStatus
+            | backgroundIcon
+        "
+      >
+        <i
+          [ngClass]="
+            encontro.situacaoAprendizagem.situacaoAprendizagemStatus | icon
+          "
+        ></i>
+      </span>
+    </ng-template>
+
+    <ng-template pTemplate="content" let-encontro>
+      <p-card
+        [header]="encontro.encontroObservacao | titlecase"
+        [subheader]="
+          encontro.encontroHoraInicio !== null
+            ? (encontro.encontroHoraInicio | date: 'dd/MM/yyyy')
+            : encontro.encontroHoraInicio
+        "
+      >
+        <p>
+          {{ encontro.encontroObservacao }} Lorem ipsum dolor, sit amet
+          consectetur adipisicing elit. Adipisci, dolore commodi? Esse repellat
+          possimus eos magni, odit nulla eaque dicta quibusdam alias dignissimos
+          illo ea laboriosam reprehenderit mollitia molestiae iste!
+        </p>
+        <ul>
+          <li>
+            <p
+              [ngClass]="
+                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
+                encontro.objetoAprendizagem.objetoAprendizagemId
+                  ? 'check'
+                  : 'none'
+              "
+            >
+              Situação de aprendizagem:
+              {{ encontro.situacaoAprendizagem.situacaoAprendizagemId }}
+              de
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              <i
+                [ngClass]="
+                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
+                "
+              ></i>
+            </p>
+          </li>
+          <li>
+            <p
+              [ngClass]="
+                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
+                encontro.objetoAprendizagem.objetoAprendizagemId
+                  ? 'check'
+                  : 'none'
+              "
+            >
+              Objeto de aprendizagem:
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              de
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              <i
+                [ngClass]="
+                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
+                "
+              ></i>
+            </p>
+          </li>
+          <li>
+            <p
+              [ngClass]="
+                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
+                encontro.objetoAprendizagem.objetoAprendizagemId
+                  ? 'check'
+                  : 'none'
+              "
+            >
+              Atividades:
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              de
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              <i
+                [ngClass]="
+                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
+                "
+              ></i>
+            </p>
+          </li>
+          <li>
+            <p
+              [ngClass]="
+                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
+                encontro.objetoAprendizagem.objetoAprendizagemId
+                  ? 'check'
+                  : 'none'
+              "
+            >
+              Atividades de verficação:
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              de
+              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
+              <i
+                [ngClass]="
+                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
+                "
+              ></i>
+            </p>
+          </li>
+        </ul>
+        <!-- <button pButton label="Read more" class="p-button-text"></button> -->
+      </p-card>
+    </ng-template>
+  </p-timeline>
+</div>
+
+<ng-template #isLoading>
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

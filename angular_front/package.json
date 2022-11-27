@@ -25,7 +25,7 @@
     "jwt-decode": "^3.1.2",
     "ngx-mask": "^13.1.1",
     "primeicons": "^6.0.1",
-    "primeng": "^14.2.0",
+    "primeng": "^14.2.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
