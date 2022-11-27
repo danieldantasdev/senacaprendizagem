@@ -22,12 +22,14 @@
 
     <ng-template pTemplate="content" let-encontro>
       <p-card
-        [header]="encontro.encontroObservacao | titlecase"
-        [subheader]="
+        [header]="
           encontro.encontroHoraInicio !== null
-            ? (encontro.encontroHoraInicio | date: 'EEEE , dd/MM/yyyy':'':'pt-BR')
+            ? (encontro.encontroHoraInicio
+              | date: 'EEEE, dd/MM/yyyy':'':'pt-BR'
+              | titlecase)
             : encontro.encontroHoraInicio
         "
+        [subheader]="encontro.encontroObservacao | titlecase"
       >
         <p>
           {{ encontro.encontroObservacao }} Lorem ipsum dolor, sit amet
@@ -35,12 +37,12 @@
           possimus eos magni, odit nulla eaque dicta quibusdam alias dignissimos
           illo ea laboriosam reprehenderit mollitia molestiae iste!
         </p>
-        <ul>
-          <li>
+        <ul id="resumo">
+          <li id="situacao-aprendizagem">
             <p
               [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
-                encontro.objetoAprendizagem.objetoAprendizagemId
+                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
+                encontro.objetoAprendizagem.objetoAprendizagemStatus
                   ? 'check'
                   : 'none'
               "
@@ -49,18 +51,19 @@
               {{ encontro.situacaoAprendizagem.situacaoAprendizagemId }}
               de
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              <i
-                [ngClass]="
-                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
-                "
-              ></i>
+              -
+              {{
+                encontro.encontroHoraFim
+                  | date: "dd/MM/yyyy":"":"pt-BR"
+                  | titlecase
+              }}
             </p>
           </li>
-          <li>
+          <li id="objeto-aprendizagem">
             <p
               [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
-                encontro.objetoAprendizagem.objetoAprendizagemId
+                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
+                encontro.objetoAprendizagem.objetoAprendizagemStatus
                   ? 'check'
                   : 'none'
               "
@@ -69,18 +72,19 @@
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
               de
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              <i
-                [ngClass]="
-                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
-                "
-              ></i>
+              -
+              {{
+                encontro.encontroHoraFim
+                  | date: "dd/MM/yyyy":"":"pt-BR"
+                  | titlecase
+              }}
             </p>
           </li>
-          <li>
+          <li id="atividade">
             <p
               [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
-                encontro.objetoAprendizagem.objetoAprendizagemId
+                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
+                encontro.objetoAprendizagem.objetoAprendizagemStatus
                   ? 'check'
                   : 'none'
               "
@@ -89,18 +93,19 @@
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
               de
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              <i
-                [ngClass]="
-                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
-                "
-              ></i>
+              -
+              {{
+                encontro.encontroHoraFim
+                  | date: "dd/MM/yyyy":"":"pt-BR"
+                  | titlecase
+              }}
             </p>
           </li>
-          <li>
+          <li id="atividade-verificação">
             <p
               [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemId ===
-                encontro.objetoAprendizagem.objetoAprendizagemId
+                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
+                encontro.objetoAprendizagem.objetoAprendizagemStatus
                   ? 'check'
                   : 'none'
               "
@@ -109,12 +114,26 @@
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
               de
               {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              <i
-                [ngClass]="
-                  encontro.situacaoAprendizagem.situacaoAprendizagemId | icon
-                "
-              ></i>
+              -
+              {{
+                encontro.encontroHoraFim
+                  | date: "dd/MM/yyyy":"":"pt-BR"
+                  | titlecase
+              }}
             </p>
+          </li>
+          <li
+            id="badge"
+            *ngIf="encontro.objetoAprendizagem.objetoAprendizagemId === 1"
+          >
+            <i
+              [ngClass]="
+                encontro.objetoAprendizagem.objetoAprendizagemId === 1
+                  ? 'pi pi-gift'
+                  : 'none'
+              "
+              style="font-size: 2rem"
+            ></i>
           </li>
         </ul>
         <!-- <button pButton label="Read more" class="p-button-text"></button> -->

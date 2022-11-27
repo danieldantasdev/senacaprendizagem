@@ -184,7 +184,7 @@
                         "situacaoAprendizagemTitulo": "",
                         "situacaoAprendizagemDescricao": "",
                         "situacaoAprendizagemOrdem": 2,
-                        "situacaoAprendizagemStatus": 2,
+                        "situacaoAprendizagemStatus": 0,
                         "planejamentoUcId": 2,
                         "grauDificuldadeId": 2,
                         "badgeId": 2
@@ -293,7 +293,7 @@
                         "situacaoAprendizagemTitulo": "",
                         "situacaoAprendizagemDescricao": "",
                         "situacaoAprendizagemOrdem": 3,
-                        "situacaoAprendizagemStatus": 3,
+                        "situacaoAprendizagemStatus": 0,
                         "planejamentoUcId": 3,
                         "grauDificuldadeId": 3,
                         "badgeId": 3

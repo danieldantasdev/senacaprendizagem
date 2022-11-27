@@ -10,8 +10,8 @@ export class IconPipe implements PipeTransform {
       case 1:
         return PrimeIcons.CHECK;
       case 2:
-        return PrimeIcons.TIMES;
+        return PrimeIcons.CLOCK;
     }
-    return PrimeIcons.TIMES;
+    return PrimeIcons.CLOCK;
   }
 }
