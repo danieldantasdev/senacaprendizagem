@@ -75,6 +75,16 @@ import { IconPipe } from './shared/pipes/icon.pipe';
 import { BackgroundIconPipe } from './shared/pipes/background-icon.pipe';
 import { CheckClassPipe } from './shared/pipes/check-class.pipe';
 
+import { registerLocaleData } from '@angular/common';
+import localePT from '@angular/common/locales/pt';
+import localeES from '@angular/common/locales/es';
+import localeDE from '@angular/common/locales/de';
+import localeFR from '@angular/common/locales/fr';
+registerLocaleData(localePT);
+registerLocaleData(localeES);
+registerLocaleData(localeDE);
+registerLocaleData(localeFR);
+
 //PrimeNG Imports
 
 export function PegarTokenUsuario() {

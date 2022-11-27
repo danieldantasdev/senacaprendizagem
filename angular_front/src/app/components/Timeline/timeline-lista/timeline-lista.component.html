@@ -25,7 +25,7 @@
         [header]="encontro.encontroObservacao | titlecase"
         [subheader]="
           encontro.encontroHoraInicio !== null
-            ? (encontro.encontroHoraInicio | date: 'dd/MM/yyyy')
+            ? (encontro.encontroHoraInicio | date: 'EEEE , dd/MM/yyyy':'':'pt-BR')
             : encontro.encontroHoraInicio
         "
       >
