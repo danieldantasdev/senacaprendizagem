@@ -61,7 +61,7 @@ import { HeaderComponent } from './components/Dashboard/header/header.component'
 
 
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 //PrimeNG Imports
@@ -71,9 +71,11 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { UsuarioCalendarioAcademicoComponent } from './components/Dashboard/usuario-dashboard/usuario-calendario-academico/usuario-calendario-academico/usuario-calendario-academico.component';
+import { BadgeComponent } from './components/Badge/badge.component';
+import { MenuModule } from 'primeng/menu';
 
 
-export function PegarTokenUsuario(){
+export function PegarTokenUsuario() {
   return localStorage.getItem("TokenUsuarioLogado");
 }
 
@@ -100,7 +102,8 @@ export function PegarTokenUsuario(){
     AdministradorDashboardComponent,
     AdministradorListaCursosComponent,
     UsuarioListaUcComponent,
-    UsuarioCalendarioAcademicoComponent
+    UsuarioCalendarioAcademicoComponent,
+    BadgeComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,11 +132,11 @@ export function PegarTokenUsuario(){
     FlexLayoutModule,
     NgxMaskModule.forRoot(),
     JwtModule.forRoot({
-      config:{
+      config: {
         tokenGetter: PegarTokenUsuario,
         allowedDomains: ['localhost:5099'],
         disallowedRoutes: []
-      }      
+      }
     }),
     MatSidenavModule,
     MatListModule,
@@ -142,14 +145,15 @@ export function PegarTokenUsuario(){
     ButtonModule,
     ProgressBarModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    MenuModule,
   ],
   providers: [
     CursosService,
     CursoTiposService,
     FuncoesService,
     OfertasService,
-    AuthGuardService,    
+    AuthGuardService,
     HttpClientModule
   ],
   bootstrap: [AppComponent]

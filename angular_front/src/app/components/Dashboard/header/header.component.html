@@ -3,11 +3,6 @@
     <span class="spacer"></span>
 
     <div *ngIf="idUsuarioLogado" fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="end center">
-        <div>
-            Olá, {{nomeUsuarioLogado}}
-        </div>
-        <div>
-            <button type="button" mat-raised-button (click)="EfetuarLogout()">Logout</button>
-        </div>
+        <app-badge></app-badge>
     </div>
 </mat-toolbar>
