@@ -80,6 +80,8 @@ import localePT from '@angular/common/locales/pt';
 import localeES from '@angular/common/locales/es';
 import localeDE from '@angular/common/locales/de';
 import localeFR from '@angular/common/locales/fr';
+import { TimelineDetalhesComponent } from './components/Timeline/timeline-detalhes/timeline-detalhes.component';
+import { DetalheTimelineComponent } from './shared/modal/detalhe-timeline/detalhe-timeline.component';
 registerLocaleData(localePT);
 registerLocaleData(localeES);
 registerLocaleData(localeDE);
@@ -120,6 +122,8 @@ export function PegarTokenUsuario() {
     IconPipe,
     BackgroundIconPipe,
     CheckClassPipe,
+    TimelineDetalhesComponent,
+    DetalheTimelineComponent,
   ],
   imports: [
     BrowserModule,

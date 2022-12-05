@@ -1,7 +1,8 @@
+import { EncontroStatus } from './../models/EncontroStatus';
 import { Encontro } from './../models/Encontro';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
@@ -17,6 +18,7 @@ const httpOptions = {
 export class EncontroService {
   // url = environment.apiServer + 'api/Encontro';
   url = '/assets/db/timeline.json';
+  url2 = '/assets/db/encontro.json';
   constructor(private https: HttpClient) {}
 
   ObterEncontros(): Observable<Encontro[]> {
@@ -24,9 +26,7 @@ export class EncontroService {
     return this.https.get<Encontro[]>(apiUrl);
   }
 
-  ObterEncontroPeloId(
-    encontroId: Encontro['encontroId']
-  ): Observable<Encontro> {
+  ObterEncontroPeloId(encontroId: Encontro['id']): Observable<Encontro> {
     const apiUrl = `${this.url}/${encontroId}`;
     return this.https.get<Encontro>(apiUrl);
   }
@@ -36,15 +36,29 @@ export class EncontroService {
   }
 
   AtualizarEncontro(
-    encontroId: Encontro['encontroId'],
+    encontroId: Encontro['id'],
     encontro: Encontro
   ): Observable<Encontro> {
     const apiUrl = `${this.url}/${encontroId}`;
     return this.https.put<Encontro>(apiUrl, encontro, httpOptions);
   }
 
-  ExcluirEncontro(encontroId: Encontro['encontroId']): Observable<Encontro> {
+  ExcluirEncontro(encontroId: Encontro['id']): Observable<Encontro> {
     const apiUrl = `${this.url}/${encontroId}`;
     return this.https.delete<Encontro>(apiUrl, httpOptions);
+  }
+
+  FiltarEncontroPelaData(
+    dataEncontro: Encontro['horaFim']
+  ): Observable<Encontro> {
+    const apiUrl = `${this.url}/FiltrarEncontro/${dataEncontro}`;
+    return this.https.get<Encontro>(apiUrl, httpOptions);
+  }
+
+  ObterStatusDoEncontro(
+    idEncontro: EncontroStatus['id']
+  ): Observable<EncontroStatus> {
+    const apiUrl = `${this.url2}/ObterStatusEncontro/${idEncontro}`;
+    return this.https.get<EncontroStatus>(apiUrl, httpOptions);
   }
 }

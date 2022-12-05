@@ -1,3 +1,4 @@
+import { TimelineDetalhesComponent } from './components/Timeline/timeline-detalhes/timeline-detalhes.component';
 import { TimelineListaComponent } from './components/Timeline/timeline-lista/timeline-lista.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -70,6 +71,10 @@ const routes: Routes = [
       {
         path: 'timeline/listagemTimeline',
         component: TimelineListaComponent,
+      },
+      {
+        path: 'timeline/detalhe/:id',
+        component: TimelineDetalhesComponent,
       },
     ],
   },

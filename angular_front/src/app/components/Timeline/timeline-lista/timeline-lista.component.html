@@ -1,6 +1,6 @@
 <div class="card l-section__timeline">
   <p-timeline
-    *ngIf="encontros$ | async as encontros; else isLoading"
+    *ngIf="encontros.length !== 0; else isLoading"
     [value]="encontros"
     styleClass="customized-timeline"
   >
@@ -8,13 +8,22 @@
       <span
         class="custom-marker shadow-2"
         [style.backgroundColor]="
-          encontro.situacaoAprendizagem.situacaoAprendizagemStatus
-            | backgroundIcon
+          SituacaoAprendizagem === totalSituacaoAprendizagem &&
+          Atividade === totalAtividade &&
+          BadgesObtidos === totalBadgesObtidos &&
+          ObjetoAprendizagem === totalObjetoAprendizagem
+            ? '#3f51b5'
+            : '#00000026'
         "
       >
         <i
           [ngClass]="
-            encontro.situacaoAprendizagem.situacaoAprendizagemStatus | icon
+            SituacaoAprendizagem === totalSituacaoAprendizagem &&
+            Atividade === totalAtividade &&
+            BadgesObtidos === totalBadgesObtidos &&
+            ObjetoAprendizagem === totalObjetoAprendizagem
+              ? 'pi pi-check'
+              : 'pi pi-times'
           "
         ></i>
       </span>
@@ -23,106 +32,121 @@
     <ng-template pTemplate="content" let-encontro>
       <p-card
         [header]="
-          encontro.encontroHoraInicio !== null
-            ? (encontro.encontroHoraInicio
-              | date: 'EEEE, dd/MM/yyyy':'':'pt-BR'
+          encontro.horaInicio !== null
+            ? (encontro.horaInicio
+              | date : 'EEEE, dd/MM/yyyy' : '' : 'pt-BR'
               | titlecase)
-            : encontro.encontroHoraInicio
+            : encontro.horaInicio
         "
-        [subheader]="encontro.encontroObservacao | titlecase"
+        [subheader]="
+          encontro.descricao !== undefined && null
+            ? encontro.descricao
+            : ('UNIDADE CURRICULAR' | titlecase)
+        "
       >
-        <p>
-          {{ encontro.encontroObservacao }} Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Adipisci, dolore commodi? Esse repellat
-          possimus eos magni, odit nulla eaque dicta quibusdam alias dignissimos
-          illo ea laboriosam reprehenderit mollitia molestiae iste!
+        <p id="descricao">
+          {{
+            encontro.descricao !== undefined && null
+              ? encontro.descricao
+              : " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias quos distinctio sapiente minima provident nostrum dolore necessitatibus. Ex voluptate aut excepturi sed neque dolor, doloribus illo aliquam assumenda officia culpa."
+          }}
         </p>
+
         <ul id="resumo">
-          <li id="situacao-aprendizagem">
-            <p
-              [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
-                encontro.objetoAprendizagem.objetoAprendizagemStatus
-                  ? 'check'
-                  : 'none'
-              "
-            >
-              Situação de aprendizagem:
-              {{ encontro.situacaoAprendizagem.situacaoAprendizagemId }}
-              de
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              -
-              {{
-                encontro.encontroHoraFim
-                  | date: "dd/MM/yyyy":"":"pt-BR"
-                  | titlecase
-              }}
-            </p>
+          <li id="situacao-aprendizagem" *ngFor="let encontroStatus of encontrosStatus">
+            <div fxLayout="row" fxLayoutGap="10px">
+              <p
+                [ngClass]="
+                  SituacaoAprendizagem === totalSituacaoAprendizagem
+                    ? 'check'
+                    : 'none'
+                "
+              >
+                Situação de aprendizagem:
+                {{ encontroStatus.totalSituacaoAprendizagem }}
+                de
+                {{ encontroStatus.totalSituacaoAprendizagem }}
+              </p>
+              <!-- <p *ngIf="encontroStatus.id === encontro.id">
+                aaaaaaaaaaaaaaaaaa:{{ encontroStatus }}
+              </p> -->
+              <p *ngIf="SituacaoAprendizagem === totalSituacaoAprendizagem">
+                {{
+                  encontro.horaFim
+                    | date : "dd/MM/yyyy" : "" : "pt-BR"
+                    | titlecase
+                }}
+              </p>
+            </div>
           </li>
+
           <li id="objeto-aprendizagem">
-            <p
-              [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
-                encontro.objetoAprendizagem.objetoAprendizagemStatus
-                  ? 'check'
-                  : 'none'
-              "
-            >
-              Objeto de aprendizagem:
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              de
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              -
-              {{
-                encontro.encontroHoraFim
-                  | date: "dd/MM/yyyy":"":"pt-BR"
-                  | titlecase
-              }}
-            </p>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <p
+                [ngClass]="
+                  ObjetoAprendizagem === totalObjetoAprendizagem
+                    ? 'check'
+                    : 'none'
+                "
+              >
+                Objeto de aprendizagem:
+                {{ ObjetoAprendizagem }}
+                de
+                {{ totalObjetoAprendizagem }}
+              </p>
+              <p *ngIf="ObjetoAprendizagem === totalObjetoAprendizagem">
+                {{
+                  encontro.horaFim
+                    | date : "dd/MM/yyyy" : "" : "pt-BR"
+                    | titlecase
+                }}
+              </p>
+            </div>
           </li>
+
           <li id="atividade">
-            <p
-              [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
-                encontro.objetoAprendizagem.objetoAprendizagemStatus
-                  ? 'check'
-                  : 'none'
-              "
-            >
-              Atividades:
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              de
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              -
-              {{
-                encontro.encontroHoraFim
-                  | date: "dd/MM/yyyy":"":"pt-BR"
-                  | titlecase
-              }}
-            </p>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <p [ngClass]="Atividade === totalAtividade ? 'check' : 'none'">
+                Atividades:
+                {{ Atividade }}
+                de
+                {{ totalAtividade }}
+              </p>
+              <p *ngIf="Atividade === totalAtividade">
+                {{
+                  encontro.horaFim
+                    | date : "dd/MM/yyyy" : "" : "pt-BR"
+                    | titlecase
+                }}
+              </p>
+            </div>
           </li>
+
           <li id="atividade-verificação">
-            <p
-              [ngClass]="
-                encontro.situacaoAprendizagem.situacaoAprendizagemStatus ===
-                encontro.objetoAprendizagem.objetoAprendizagemStatus
-                  ? 'check'
-                  : 'none'
-              "
-            >
-              Atividades de verficação:
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              de
-              {{ encontro.objetoAprendizagem.objetoAprendizagemId }}
-              -
-              {{
-                encontro.encontroHoraFim
-                  | date: "dd/MM/yyyy":"":"pt-BR"
-                  | titlecase
-              }}
-            </p>
+            <div fxLayout="row" fxLayoutGap="10px">
+              <p
+                [ngClass]="
+                  AtividadeVerificacao === totalAtividadeVerificacao
+                    ? 'check'
+                    : 'none'
+                "
+              >
+                Situação de aprendizagem:
+                {{ AtividadeVerificacao }}
+                de
+                {{ totalAtividadeVerificacao }}
+              </p>
+              <p *ngIf="AtividadeVerificacao === totalAtividadeVerificacao">
+                {{
+                  encontro.horaFim
+                    | date : "dd/MM/yyyy" : "" : "pt-BR"
+                    | titlecase
+                }}
+              </p>
+            </div>
           </li>
-          <li
+
+          <!-- <li
             id="badge"
             *ngIf="encontro.objetoAprendizagem.objetoAprendizagemId === 1"
           >
@@ -134,9 +158,15 @@
               "
               style="font-size: 2rem"
             ></i>
-          </li>
+          </li> -->
         </ul>
-        <!-- <button pButton label="Read more" class="p-button-text"></button> -->
+        <!-- <app-modal-detalhe-timeline></app-modal-detalhe-timeline> -->
+        <button
+          pButton
+          label="Ler mais"
+          class="p-button-text"
+          [routerLink]="['/timeline/detalhe/', encontro.id]"
+        ></button>
       </p-card>
     </ng-template>
   </p-timeline>
