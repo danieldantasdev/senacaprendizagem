@@ -325,5 +325,21 @@
                                 "planejamentoStatus": 3,
                                 "grupoId": 3
                               }
+  },
+  {
+    "id": 1,
+    "descricao": "",
+    "horaInicio": "2020-09-20",
+    "horaFim": "2020-09-20",
+    "local": "SENAC",
+    "status": 1,
+    "diaLetivoId": 1,
+      "diaLetivo": {
+
+      },
+    "grupoId": 1,
+    "grupo": {},
+    "encontroTipoId": 1,
+    "encontroTipo": {}
   }
 ]

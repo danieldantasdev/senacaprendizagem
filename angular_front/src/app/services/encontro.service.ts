@@ -16,9 +16,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class EncontroService {
-  // url = environment.apiServer + 'api/Encontro';
-  url = '/assets/db/timeline.json';
-  url2 = '/assets/db/encontro.json';
+  url = environment.apiServer + 'api/Encontro';
+  // url = '/assets/db/timeline.json';
+  // url2 = '/assets/db/encontro.json';
   constructor(private https: HttpClient) {}
 
   ObterEncontros(): Observable<Encontro[]> {
@@ -58,7 +58,7 @@ export class EncontroService {
   ObterStatusDoEncontro(
     idEncontro: EncontroStatus['id']
   ): Observable<EncontroStatus> {
-    const apiUrl = `${this.url2}/ObterStatusEncontro/${idEncontro}`;
+    const apiUrl = `${this.url}/ObterStatusEncontro/${idEncontro}`;
     return this.https.get<EncontroStatus>(apiUrl, httpOptions);
   }
 }

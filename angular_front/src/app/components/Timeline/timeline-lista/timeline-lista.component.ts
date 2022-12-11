@@ -20,11 +20,11 @@ export class TimelineListaComponent implements OnInit {
 
   encontrosStatus: EncontroStatus[] = [];
 
-  SituacaoAprendizagem: number = 1;
-  ObjetoAprendizagem: number = 1;
-  Atividade: number = 1;
-  AtividadeVerificacao: number = 1;
-  BadgesObtidos: number = 1;
+  situacaoAprendizagem: number = 3;
+  objetoAprendizagem: number = 3;
+  atividade: number = 2;
+  atividadeVerificacao: number = 1;
+  badgesObtidos: number = 1;
 
   totalSituacaoAprendizagem: number = 1;
   totalObjetoAprendizagem: number = 1;
@@ -32,18 +32,16 @@ export class TimelineListaComponent implements OnInit {
   totalAtividadeVerificacao: number = 1;
   totalBadgesObtidos: number = 1;
   statusCursada: number = 0;
+
   PrimeIcons: PrimeIcons;
 
   constructor(
     private encontroService: EncontroService,
-    private errorService: ErrorService,
-    private storageService: StorageService,
-    private _route: ActivatedRoute
+    private errorService: ErrorService
   ) {}
 
   ngOnInit(): void {
     this.ObterEncontros();
-    this.ObterStatusDoEncontro();
   }
 
   // ObterEncontros$ = () => {
@@ -57,31 +55,25 @@ export class TimelineListaComponent implements OnInit {
   // };
 
   ObterEncontros = () => {
-    this.encontroService
-      .ObterEncontros()
-      .pipe(
+    this.encontroService.ObterEncontros().pipe(
         delay(500),
         catchError((error) => {
           this.errorService.onError('Erro ao carregar cursos.');
           return of([]);
         })
-      )
-      .subscribe((encotros) => {
-        this.encontros = encotros;
-
+      ).subscribe((encontros) => {
+        this.encontros = encontros;
         let corrida: number = 0;
 
-        for (const iterator of encotros) {
-          this.encontroService
-            .ObterStatusDoEncontro(iterator.id)
-            .subscribe((encontro) => {
-              if (iterator.id === encontro.id) {
-                this.encontrosStatus.push(encontro);
+        for (const iterator of encontros) {
+          this.encontroService.ObterStatusDoEncontro(iterator.id).subscribe((encontroStatus) => {
+              if (iterator.id === encontroStatus.id) {
+                this.encontrosStatus.push(encontroStatus);
                 corrida++;
 
                 if (corrida === this.encontros.length) {
                   this.encontrosStatus.sort((a, b) => {
-                    return a.id < b.id ? 1 : -1;
+                    return a.id < b.id ? -1 : 1;
                   });
                 }
               }
@@ -89,8 +81,6 @@ export class TimelineListaComponent implements OnInit {
         }
       });
   };
-
-  ObterStatusDoEncontro = () => {};
 
   // ObterEncontrosId = () => {
   //   this.encontroService.ObterEncontros().subscribe((data) => {
